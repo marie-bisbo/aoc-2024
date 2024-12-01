@@ -45,12 +45,21 @@ void GetResult()
 	int result = 0;
 	for (int i = 0; i < NUM_LINES; i++)
 	{
-		result += abs(firstList[i] - secondList[i]);
+		int currentValue = firstList[i];
+		int occurencesInSecondList = 0;
+		for (int j = 0; j < NUM_LINES; j++)
+		{
+			if (secondList[j] == currentValue)
+			{
+				occurencesInSecondList++;
+			}
+		}
+		result += occurencesInSecondList * currentValue;
 	}
 
 	printf("File found!\n");
 
-	printf("Result: %d", result);
+	printf("Result: %d\n", result);
 
 	return;
 }
