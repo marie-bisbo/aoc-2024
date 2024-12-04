@@ -7,8 +7,8 @@
 #include <string.h>
 #include <stdbool.h>
 
-#define LINE_LENGTH 10
-#define LINE_LENGTH_SQUARED 100
+#define LINE_LENGTH 140
+#define LINE_LENGTH_SQUARED 19600
 
 void GetResult()
 {
@@ -52,14 +52,14 @@ void GetResult()
 			continue;
 		}
 
-		if (i - 3 > -1)
+		if (((i % LINE_LENGTH) - 3) > -1)
 		{
 			if (letters[i - 1] == 'M' && letters[i - 2] == 'A' && letters[i - 3] == 'S')
 			{
 				xmasCounter++;
 			}
 		}
-		if (i + 3 < LINE_LENGTH_SQUARED)
+		if (((i % LINE_LENGTH) + 3) < LINE_LENGTH)
 		{
 			if (letters[i + 1] == 'M' && letters[i + 2] == 'A' && letters[i + 3] == 'S')
 			{
@@ -80,28 +80,32 @@ void GetResult()
 				xmasCounter++;
 			}
 		}
-		if ((i - (3 * LINE_LENGTH) - 3) > -1)
+		// Up left - Done
+		if (((i - (3 * LINE_LENGTH)) > -1) && (((i % LINE_LENGTH) - 3) > -1))
 		{
 			if (letters[i - LINE_LENGTH - 1] == 'M' && letters[i - (2 * LINE_LENGTH) - 2] == 'A' && letters[i - (3 * LINE_LENGTH) - 3] == 'S')
 			{
 				xmasCounter++;
 			}
 		}
-		if ((i + (3 * LINE_LENGTH) + 3) < LINE_LENGTH_SQUARED)
+		// Down right
+		if (((i + (3 * LINE_LENGTH)) < LINE_LENGTH_SQUARED) && (((i % LINE_LENGTH) + 3) < LINE_LENGTH))
 		{
 			if (letters[i + LINE_LENGTH + 1] == 'M' && letters[i + (2 * LINE_LENGTH) + 2] == 'A' && letters[i + (3 * LINE_LENGTH) + 3] == 'S')
 			{
 				xmasCounter++;
 			}
 		}
-		if ((i - (3 * LINE_LENGTH) + 3) > -1)
+		// Up right
+		if (((i - (3 * LINE_LENGTH)) > -1) && (((i % LINE_LENGTH) + 3) < LINE_LENGTH))
 		{
 			if (letters[i - LINE_LENGTH + 1] == 'M' && letters[i - (2 * LINE_LENGTH) + 2] == 'A' && letters[i - (3 * LINE_LENGTH) + 3] == 'S')
 			{
 				xmasCounter++;
 			}
 		}
-		if ((i + (3 * LINE_LENGTH) - 3) < LINE_LENGTH_SQUARED)
+		// Down left
+		if (((i + (3 * LINE_LENGTH)) < LINE_LENGTH_SQUARED) && (((i % LINE_LENGTH) - 3) > -1))
 		{
 			if (letters[i + LINE_LENGTH - 1] == 'M' && letters[i + (2 * LINE_LENGTH) - 2] == 'A' && letters[i + (3 * LINE_LENGTH) - 3] == 'S')
 			{
