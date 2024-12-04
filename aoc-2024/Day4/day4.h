@@ -7,8 +7,8 @@
 #include <string.h>
 #include <stdbool.h>
 
-#define LINE_LENGTH 140
-#define LINE_LENGTH_SQUARED 19600
+#define LINE_LENGTH 10
+#define LINE_LENGTH_SQUARED 100
 
 void GetResult()
 {
@@ -38,10 +38,8 @@ void GetResult()
 	while (counter < LINE_LENGTH_SQUARED)
 	{
 		c = fgetc(fptr);
-		// printf("Counter: %d\n", counter);
-		if ((c != EOF) && (c != '\n'))
+		if ((c != EOF) && (c != '\n') && (c != '\0'))
 		{
-			// printf("Counter: %d, Letter: %c\n", counter, c);
 			letters[counter++] = (char)c;
 		}
 	}
@@ -49,8 +47,6 @@ void GetResult()
 	int xmasCounter = 0;
 	for (int i = 0; i < LINE_LENGTH_SQUARED; i++)
 	{
-		// printf("i: %d, Letter: %c\n", i, letters[i]);
-		printf("i: %i\n", i);
 		if (letters[i] != 'X')
 		{
 			continue;
@@ -60,7 +56,6 @@ void GetResult()
 		{
 			if (letters[i - 1] == 'M' && letters[i - 2] == 'A' && letters[i - 3] == 'S')
 			{
-				printf("i: %d\n", i);
 				xmasCounter++;
 			}
 		}
@@ -68,7 +63,6 @@ void GetResult()
 		{
 			if (letters[i + 1] == 'M' && letters[i + 2] == 'A' && letters[i + 3] == 'S')
 			{
-				printf("i: %d\n", i);
 				xmasCounter++;
 			}
 		}
@@ -76,7 +70,6 @@ void GetResult()
 		{
 			if (letters[i - LINE_LENGTH] == 'M' && letters[i - (2 * LINE_LENGTH)] == 'A' && letters[i - (3 * LINE_LENGTH)] == 'S')
 			{
-				printf("i: %d\n", i);
 				xmasCounter++;
 			}
 		}
@@ -84,7 +77,6 @@ void GetResult()
 		{
 			if (letters[i + LINE_LENGTH] == 'M' && letters[i + (2 * LINE_LENGTH)] == 'A' && letters[i + (3 * LINE_LENGTH)] == 'S')
 			{
-				printf("i: %d\n", i);
 				xmasCounter++;
 			}
 		}
@@ -92,7 +84,6 @@ void GetResult()
 		{
 			if (letters[i - LINE_LENGTH - 1] == 'M' && letters[i - (2 * LINE_LENGTH) - 2] == 'A' && letters[i - (3 * LINE_LENGTH) - 3] == 'S')
 			{
-				printf("i: %d\n", i);
 				xmasCounter++;
 			}
 		}
@@ -100,7 +91,6 @@ void GetResult()
 		{
 			if (letters[i + LINE_LENGTH + 1] == 'M' && letters[i + (2 * LINE_LENGTH) + 2] == 'A' && letters[i + (3 * LINE_LENGTH) + 3] == 'S')
 			{
-				printf("i: %d\n", i);
 				xmasCounter++;
 			}
 		}
@@ -108,7 +98,6 @@ void GetResult()
 		{
 			if (letters[i - LINE_LENGTH + 1] == 'M' && letters[i - (2 * LINE_LENGTH) + 2] == 'A' && letters[i - (3 * LINE_LENGTH) + 3] == 'S')
 			{
-				printf("i: %d\n", i);
 				xmasCounter++;
 			}
 		}
@@ -116,7 +105,6 @@ void GetResult()
 		{
 			if (letters[i + LINE_LENGTH - 1] == 'M' && letters[i + (2 * LINE_LENGTH) - 2] == 'A' && letters[i + (3 * LINE_LENGTH) - 3] == 'S')
 			{
-				printf("i: %d\n", i);
 				xmasCounter++;
 			}
 		}
