@@ -21,6 +21,7 @@ void GetResult()
 
 	char row[4000];
 	unsigned long long total = 0;
+	bool enabled = true;
 	while (fgets(row, 4000, fptr) != NULL)
 	{
 		for (int i = 0; i < 4000; i++)
@@ -28,6 +29,20 @@ void GetResult()
 			if (row[i] == '\0' || row[i] == '\n')
 			{
 				break;
+			}
+
+			if (row[i] == 'd' && row[i + 1] == 'o' && row[i + 2] == '(' && row[i + 3] == ')')
+			{
+				enabled = true;
+			}
+			else if (row[i] == 'd' && row[i + 1] == 'o' && row[i + 2] == 'n' && row[i + 3] == '\'' && row[i + 4] == 't' && row[i + 5] == '(' && row[i + 6] == ')')
+			{
+				enabled = false;
+			}
+
+			if (!enabled)
+			{
+				continue;
 			}
 
 			if (row[i] == 'm' && row[i + 1] == 'u' && row[i + 2] == 'l' && row[i + 3] == '(')
@@ -39,10 +54,8 @@ void GetResult()
 				char* next;
 				while (counter < 8)
 				{
-					printf("Char: %c\n", row[tmp]);
 					if (row[tmp] == ')')
 					{
-						printf("Tmp str: %s\n", tmpStr);
 						int multiply = 1;
 						ptr = strtok_s(tmpStr, ",", &next);
 						while (ptr)

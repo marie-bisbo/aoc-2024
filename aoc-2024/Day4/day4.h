@@ -28,6 +28,11 @@ void GetResult()
 		return;
 	}
 
+	for (int i = 0; i < LINE_LENGTH_SQUARED + 1; i++)
+	{
+		letters[i] = '\0';
+	}
+
 	int counter = 0;
 	int c = 0;
 	while (counter < LINE_LENGTH_SQUARED)
@@ -40,8 +45,6 @@ void GetResult()
 			letters[counter++] = (char)c;
 		}
 	}
-
-	letters[LINE_LENGTH_SQUARED] = '\0';
 
 	int xmasCounter = 0;
 	for (int i = 0; i < LINE_LENGTH_SQUARED; i++)
