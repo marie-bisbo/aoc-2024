@@ -47,69 +47,29 @@ void GetResult()
 	int xmasCounter = 0;
 	for (int i = 0; i < LINE_LENGTH_SQUARED; i++)
 	{
-		if (letters[i] != 'X')
+		if (((i - (2 * LINE_LENGTH)) > -1) && (((i % LINE_LENGTH) - 2) > -1))
 		{
-			continue;
+			if (letters[i] == 'M' && letters[i - (LINE_LENGTH) - 1] == 'A' && letters[i - (2 * LINE_LENGTH) - 2] == 'S')
+			{
+				char first = letters[i - 2];
+				char second = letters[i - (2 * LINE_LENGTH)];
+				if ((first == 'M' && second == 'S') || (first == 'S' && second == 'M'))
+				{
+					xmasCounter++;
+				}
+			}
 		}
 
-		if (((i % LINE_LENGTH) - 3) > -1)
+		if (((i + (2 * LINE_LENGTH)) < LINE_LENGTH_SQUARED) && (((i % LINE_LENGTH) + 2) < LINE_LENGTH))
 		{
-			if (letters[i - 1] == 'M' && letters[i - 2] == 'A' && letters[i - 3] == 'S')
+			if (letters[i] == 'M' && letters[i + LINE_LENGTH + 1] == 'A' && letters[i + (2 * LINE_LENGTH) + 2] == 'S')
 			{
-				xmasCounter++;
-			}
-		}
-		if (((i % LINE_LENGTH) + 3) < LINE_LENGTH)
-		{
-			if (letters[i + 1] == 'M' && letters[i + 2] == 'A' && letters[i + 3] == 'S')
-			{
-				xmasCounter++;
-			}
-		}
-		if ((i - (3 * LINE_LENGTH)) > -1)
-		{
-			if (letters[i - LINE_LENGTH] == 'M' && letters[i - (2 * LINE_LENGTH)] == 'A' && letters[i - (3 * LINE_LENGTH)] == 'S')
-			{
-				xmasCounter++;
-			}
-		}
-		if ((i + (3 * LINE_LENGTH)) < LINE_LENGTH_SQUARED)
-		{
-			if (letters[i + LINE_LENGTH] == 'M' && letters[i + (2 * LINE_LENGTH)] == 'A' && letters[i + (3 * LINE_LENGTH)] == 'S')
-			{
-				xmasCounter++;
-			}
-		}
-		// Up left - Done
-		if (((i - (3 * LINE_LENGTH)) > -1) && (((i % LINE_LENGTH) - 3) > -1))
-		{
-			if (letters[i - LINE_LENGTH - 1] == 'M' && letters[i - (2 * LINE_LENGTH) - 2] == 'A' && letters[i - (3 * LINE_LENGTH) - 3] == 'S')
-			{
-				xmasCounter++;
-			}
-		}
-		// Down right
-		if (((i + (3 * LINE_LENGTH)) < LINE_LENGTH_SQUARED) && (((i % LINE_LENGTH) + 3) < LINE_LENGTH))
-		{
-			if (letters[i + LINE_LENGTH + 1] == 'M' && letters[i + (2 * LINE_LENGTH) + 2] == 'A' && letters[i + (3 * LINE_LENGTH) + 3] == 'S')
-			{
-				xmasCounter++;
-			}
-		}
-		// Up right
-		if (((i - (3 * LINE_LENGTH)) > -1) && (((i % LINE_LENGTH) + 3) < LINE_LENGTH))
-		{
-			if (letters[i - LINE_LENGTH + 1] == 'M' && letters[i - (2 * LINE_LENGTH) + 2] == 'A' && letters[i - (3 * LINE_LENGTH) + 3] == 'S')
-			{
-				xmasCounter++;
-			}
-		}
-		// Down left
-		if (((i + (3 * LINE_LENGTH)) < LINE_LENGTH_SQUARED) && (((i % LINE_LENGTH) - 3) > -1))
-		{
-			if (letters[i + LINE_LENGTH - 1] == 'M' && letters[i + (2 * LINE_LENGTH) - 2] == 'A' && letters[i + (3 * LINE_LENGTH) - 3] == 'S')
-			{
-				xmasCounter++;
+				char first = letters[i + 2];
+				char second = letters[i + (2 * LINE_LENGTH)];
+				if ((first == 'M' && second == 'S') || (first == 'S' && second == 'M'))
+				{
+					xmasCounter++;
+				}
 			}
 		}
 	}
